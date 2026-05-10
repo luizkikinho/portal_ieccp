@@ -1,0 +1,148 @@
+/* ========================================
+   CAROUSEL SYSTEM — IECCP
+   Limpo, suave e desacoplado do card
+======================================== */
+
+.carousel-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 5px 20px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+/* Remove barra de scroll (mantém funcional) */
+.carousel-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Firefox */
+.carousel-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Item alinhado */
+.carousel-container > * {
+  scroll-snap-align: start;
+}
+
+/* Fade lateral (efeito premium) */
+.carousel-wrapper {
+  position: relative;
+}
+
+.carousel-wrapper::before,
+.carousel-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.carousel-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-body), transparent);
+}
+
+.carousel-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-body), transparent);
+}
+
+/* Espaçamento de seções */
+section {
+  margin-top: 50px;
+}
+
+/* Header da seção */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0 5px;
+}
+
+.section-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Linha lateral elegante */
+.section-title::before {
+  content: "";
+  width: 4px;
+  height: 26px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+}
+
+/* Link da seção */
+.section-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-secondary);
+  opacity: 0.9;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.section-link:hover {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.section-link i {
+  font-size: 0.75rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .carousel-container {
+    gap: 16px;
+    padding-bottom: 15px;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .section-title::before {
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    gap: 14px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

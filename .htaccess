@@ -1,0 +1,23 @@
+RewriteEngine On
+RewriteBase /
+
+# 1. Se for um arquivo real (imagem, css, js), abre direto
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 2. Rotas Especiais (Notícias, PD, Agenda, Pastoral)
+RewriteRule ^pd/([a-zA-Z0-9-]+)/?$ leitura.php?slug=$1&tipo=pd [L,QSA]
+RewriteRule ^noticia/([^/]+)/?$ leitura.php?slug=$1&tipo=noticia [L,QSA]
+RewriteRule ^pastoral/([^/]+)/?$ leitura.php?slug=$1&tipo=pastoral [L,QSA]
+RewriteRule ^evento/([^/]+)/?$ leitura.php?slug=$1&tipo=agenda [L,QSA]
+
+# 3. Mágica dos .HTML (Para Missionários)
+# Se o usuário acessar "/missionarios/aurino", o servidor abre "/missionarios/aurino.html"
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# 4. Mágica dos .PHP (Para páginas principais)
+# Se o usuário acessar "/agenda", o servidor abre "/agenda.php"
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L]

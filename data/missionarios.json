@@ -1,0 +1,38 @@
+[
+  {
+    "titulo": "Aurino e Dani",
+    "img": "../img/missionarios/aurino_familia.png",
+    "link": "/missionarios/aurino.html",
+    "descricao": "Missionários em Moçambique, ministério Palavra da Vida"
+  },
+  {
+    "titulo": "Alex e Bete",
+    "img": "../img/missionarios/alex.png",
+    "link": "/missionarios/alex.html",
+    "descricao": "Ribeirinhos na Amazônia, missão SEARA"
+  },
+  {
+    "titulo": "John e Rebecah",
+    "img": "../img/missionarios/rebecah_john_familia.png",
+    "link": "/missionarios/rebecah.html",
+    "descricao": "Aldeia Palimi-U-RR, missão MEVA"
+  },
+  {
+    "titulo": "Claudecy e Neria",
+    "img": "../img/missionarios/claudecy.jpg",
+    "link": "/missionarios/claudecy.html",
+    "descricao": "Ribeirinhos na Amazônia, missão SEARA"
+  },
+  {
+    "titulo": "Ricardo e Flávia",
+    "img": "../img/missionarios/ricardo.png",
+    "link": "/missionarios/ricardo.html",
+    "descricao": "Comunidades indígenas NE, UNIEDAS"
+  },
+  {
+    "titulo": "Richard e Yohanna",
+    "img": "../img/missionarios/richard.png",
+    "link": "/missionarios/richard.html",
+    "descricao": "Instituto Palavra da Vida Pará, PV"
+  }
+]

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /vendor/
+
+Sitemap: https://www.ieccp.com.br/sitemap.xml

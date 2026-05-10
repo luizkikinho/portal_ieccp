@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/header.css">
+  <link rel="stylesheet" href="/styles/pages.css">
+  <title>Missionários Rebecah, John e Família - MEVA</title>
+
+  <meta property="twitter:image" content="https://www.ieccp.com.br/img/capa-social-meva.jpg"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Container Principal */
+    .page-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px;
+    }
+
+    h1 {
+      font-family: "Oswald", sans-serif;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--accent-color);
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: "Oswald", sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    /* --- Seção de Apresentação (Bio + Família) --- */
+    .intro-section {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      align-items: center;
+    }
+
+    .intro-text p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .intro-images {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding: 50px 50px;
+    }
+
+    .photo-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-5px);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Estilo para o mapa ou logo da missão */
+    .map-container {
+      max-width: 250px;
+      margin: 0 auto;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+
+    /* --- Seção Galeria (Grid) --- */
+    .gallery-section {
+      background-color: var(--bg-light);
+      padding: 200px;
+      border-radius: 20px;
+      margin-bottom: 60px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 250px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px;
+      font-size: 0.9rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+
+    /* --- Seção Final (Texto + Imagem Destaque) --- */
+    .accountability-section {
+      display: flex;
+      gap: 50px;
+      background: #fff;
+      padding: 20px 40px;
+      align-items: flex-start;
+    }
+
+    .text-column {
+      flex: 1;
+      color: #000;
+    }
+
+    .media-column-highlight {
+      flex: 0.8;
+      position: sticky;
+      top: 2000px;
+    }
+
+    .highlight-frame {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+    }
+    
+    .highlight-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* --- Responsividade --- */
+    @media (max-width: 900px) {
+      .intro-section, 
+      .accountability-section {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .intro-images {
+        order: -1;
+        width: 100%;
+      }
+      
+      .media-column-highlight {
+        width: 100%;
+        margin-top: 20px;
+        position: static;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  
+  <header>
+    <a href="/" class="branding">
+      <img src="/img/logo.webp" alt="IECCP" />
+      IECCP
+    </a>
+    <nav>
+      <button id="btn-mobile" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      <ul id="menu" role="menu">
+        <li><a href="/contribua.php">Dizimos e Ofertas</a></li>
+        <li><a href="/agenda.php">Agenda</a></li>
+        <li><a href="/pastoral.php">Pastoral</a></li>
+        <li><a href="/presente-diario.php">Presente Diário</a></li>
+        <li><a href="/noticias.php">Notícias</a></li>
+        <li><a href="/missoes.php">Missões</a></li>
+        <li><button id="btn-tema" title="Mudar Tema"><i class="fa-solid fa-sun"></i></button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="page-content">
+      
+      <h1>Família Missionária no extremo Norte do Brasil</h1>
+
+      <section class="intro-section">
+        <div class="intro-text">
+          <h2>Missão no Extremo Norte</h2>
+          <p>
+            Estamos servindo ao Senhor entre indígenas no extremo norte do Brasil, com a <strong>MEVA (Missão Evangélica da Amazônia)</strong> desde 2011.
+          </p>
+          
+          <p>
+            Nosso foco é cooperar no estabelecimento de uma <strong>igreja saudável</strong> na comunidade indígena onde moramos, através do evangelismo, ensino bíblico e da tradução das Escrituras para a língua nativa.
+          </p>
+
+          <p>
+            A MEVA está entre essa etnia há mais de <strong>60 anos</strong>; mas foi há cerca de 20 anos que a semente de uma igreja começou a ser vista, fruto do trabalho árduo de muitos que nos antecederam.
+          </p>
+
+          <p>
+            Somos muito gratos a Deus por poder participar dessa obra, juntamente com nossos 3 filhos: <strong>Maria, Anna e Lucas</strong>.
+          </p>
+        </div>
+
+        <div class="intro-images">
+          <div class="photo-frame">
+            <img src="/img/missionarios/img_rebecah/familia_nos_usa.jpeg" alt="Família Missionária: Rebecah, John, Maria, Anna e Lucas">
+          </div>
+          
+          <div class="photo-frame map-container" title="Atuando com a MEVA em Roraima">
+            <img src="/img/missionarios/img_rebecah/meva.png" alt="Localização / Missão MEVA">
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2>Atuação no Campo</h2>
+        <p style="margin-bottom: 20px;">Registros do nosso dia a dia na aldeia, cooperando para o crescimento da igreja.</p>
+        
+        <div class="gallery-grid">          
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_rebecah/Missionario_com_familia.jpeg" alt="Aproveita os filhos">
+            <div class="gallery-caption">Aproveitando o tempo com os filhos</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_rebecah/construção_da_escola.jpeg" alt="Construção da Escola">
+            <div class="gallery-caption">Construção da Escola</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_rebecah/contruçao_da_escola-2.jpeg" alt="contrução da Escola parte 2">
+            <div class="gallery-caption">Construção da Escola parte 2</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_rebecah/escola_construida.jpeg" alt="Escola Construída">
+            <div class="gallery-caption">Escola Construída</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_rebecah/traducao.jpeg" alt="Tradução da Palavra">
+            <div class="gallery-caption">Tradução da Palavra</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_rebecah/ensino_da_palavra_local.jpeg" alt="Ensino da Palavra Local">
+            <div class="gallery-caption">Ensino da Palavra Local</div>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <section class="accountability-section">
+        <div class="text-column">
+          <h2><i class="fa-solid fa-seedling"></i> Frutos e Desafios</h2>
+          
+          <p>
+            Louvamos a Deus pela história de mais de 60 anos da MEVA entre este povo. É um privilégio ver, após décadas de semeadura, uma igreja começando a florescer nos últimos 20 anos.
+          </p>
+          
+          <div style="background: #eef7ff; padding: 15px; border-left: 4px solid #0056b3; border-radius: 4px; margin: 20px 0;">
+            <strong>Fase Atual:</strong><br>
+            Estamos dedicados à finalização da tradução do Novo Testamento, uma ferramenta vital para que a igreja local seja autônoma e saudável, fundamentada na Palavra.
+          </div>
+        
+          <p>
+            Contamos com suas orações pelo fortalecimento dos líderes indígenas, para que conduzam o rebanho com sabedoria, e pela nossa família (John, Rebecah, Maria, Anna e Lucas), para que Deus continue nos dando saúde e graça neste lugar.
+          </p>
+        
+          <p>
+            <em>"A Deus toda a Glória pela Sua obra no meio da floresta!"</em>
+          </p>
+        </div>
+
+        <div class="media-column-highlight">
+          <div class="highlight-frame">
+            <img src="/img/missionarios/img_rebecah/estudo_da_palavra.jpeg" alt="A Igreja Indígena reunida">
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <script src="../scripts/tema.js" defer></script>
+  <script src="../scripts/menu.js" defer></script>
+  <script src="../scripts/conteudo.js" defer></script>
+  
+</body>
+</html>

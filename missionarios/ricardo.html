@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/global.css">
+  <link rel="stylesheet" href="/styles/header.css">
+  <link rel="stylesheet" href="/styles/pages.css">
+  <title>Missionário Ricardo - Missão no Nordeste</title>
+
+  <meta property="twitter:image" content="https://www.ieccp.com.br/img/capa-social-ricardo.jpg"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Container Principal */
+    .page-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px;
+    }
+
+    h1 {
+      font-family: "Oswald", sans-serif;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--accent-color);
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: "Oswald", sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    /* --- Seção de Apresentação (Bio + Família) --- */
+    .intro-section {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      align-items: center;
+    }
+
+    .intro-text p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .intro-images {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding: 50px 50px;
+    }
+
+    .photo-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-5px);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Estilo para o mapa ou logo da missão */
+    .map-container {
+      max-width: 250px;
+      margin: 0 auto;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+
+    /* --- Seção Galeria (Grid) --- */
+    .gallery-section {
+      background-color: var(--bg-light);
+      padding: 40px;
+      border-radius: 20px;
+      margin-bottom: 60px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 250px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px;
+      font-size: 0.9rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+
+    /* --- Seção Final (Texto + Imagem/Video Destaque) --- */
+    .accountability-section {
+      display: flex;
+      gap: 50px;
+      background: #fff;
+      padding: 20px 40px;
+      align-items: flex-start;
+    }
+
+    .text-column {
+      flex: 1;
+      color: #000;
+    }
+
+    .media-column-highlight {
+      flex: 0.8;
+      position: sticky;
+      top: 20px; /* Ajustei de 2000px para 20px para funcionar o sticky corretamente */
+    }
+
+    .highlight-frame {
+      width: 100%;
+      min-height: 300px;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      background: #000; /* Fundo preto para o vídeo */
+    }
+    
+    .highlight-frame img,
+    .highlight-frame video {
+        width: 100%;
+        height: 100%; /* Ajuste para preencher */
+        object-fit: cover;
+        display: block;
+    }
+
+    /* --- Responsividade --- */
+    @media (max-width: 900px) {
+      .intro-section, 
+      .accountability-section {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .intro-images {
+        order: -1;
+        width: 100%;
+      }
+      
+      .media-column-highlight {
+        width: 100%;
+        margin-top: 20px;
+        position: static;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  
+  <header>
+    <a href="/" class="branding">
+      <img src="/img/logo.webp" alt="IECCP" />
+      IECCP
+    </a>
+    <nav>
+      <button id="btn-mobile" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      <ul id="menu" role="menu">
+        <li><a href="/contribua.php">Dizimos e Ofertas</a></li>
+        <li><a href="/agenda.php">Agenda</a></li>
+        <li><a href="/pastoral.php">Pastoral</a></li>
+        <li><a href="/presente-diario.php">Presente Diário</a></li>
+        <li><a href="/noticias.php">Notícias</a></li>
+        <li><a href="/missoes.php">Missões</a></li>
+        <li><button id="btn-tema" title="Mudar Tema"><i class="fa-solid fa-sun"></i></button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="page-content">
+      
+      <h1>Missionário Ricardo</h1>
+
+      <section class="intro-section">
+        <div class="intro-text">
+          <h2>Missão Indígena no Nordeste</h2>
+          <p>
+            O Missionário Ricardo atua com os povos indígenas na região do <strong>Nordeste</strong>. Sua missão é ir diretamente às aldeias para pregar o evangelho e estabelecer laços com a comunidade local.
+          </p>
+          
+          <p>
+            O trabalho envolve a realização de <strong>acampamentos e atividades recreativas</strong>, tanto com crianças quanto com adultos, criando oportunidades para compartilhar o amor de Cristo de forma prática e vivencial.
+          </p>
+
+          <p>
+            O lema que move este ministério é a obediência à ordem de Jesus: <em>"Ide e pregai o evangelho a toda criatura"</em>.
+          </p>
+
+          <p>
+            <em>"Graça a Deus, Deus tem cuidado de nós em cada passo dessa caminhada."</em>
+          </p>
+        </div>
+
+        <div class="intro-images">
+          <div class="photo-frame">
+            <img src="/img/missionarios/img_ricardo/familia_ricardo.jpeg" alt="Missionário Ricardo">
+          </div>
+          
+          <div class="photo-frame map-container" title="Atuação no Nordeste">
+            <img src="/img/missionarios/img_ricardo/nordeste_indigina_2025.jpeg" alt="Mapa da Missão">
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <section class="accountability-section">
+        <div class="text-column">
+          <h2><i class="fa-solid fa-notes-medical"></i> Frutos e Atualizações</h2>
+          
+          <p>
+            Temos a alegria de compartilhar que temos realizado várias missões em diversos povos indígenas. Um dos grandes frutos recentes desse trabalho tem sido com o <strong>povo Krikati</strong>, como vocês podem acompanhar no vídeo ao lado.
+          </p>
+          
+          <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 4px; margin: 20px 0; color: #856404;">
+            <strong>Pedido de Oração (Saúde):</strong><br>
+            Sigo me recuperando ainda da minha última cirurgia e das sequelas do tempo que precisei ficar acamado.
+          </div>
+        
+          <p>
+            Peço encarecidamente as orações dos irmãos pela minha saúde, para plena restauração, e pela minha família que tem sido meu suporte.
+          </p>
+        
+          <p>
+            <em>"Deus seja louvado por tudo!"</em>
+          </p>
+        </div>
+
+        <div class="media-column-highlight">
+            <div class="highlight-frame">
+                <video controls preload="metadata" style="width:100%; height:auto;">
+                    <source src="/img/missionarios/img_ricardo/povo_krikati.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
+            <small style="display:block; text-align:center; margin-top:10px; color:#666;">Evangelismo com o povo Krikati</small>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <script src="../scripts/tema.js" defer></script>
+  <script src="../scripts/menu.js" defer></script>
+  <script src="../scripts/conteudo.js" defer></script>
+  
+</body>
+</html>

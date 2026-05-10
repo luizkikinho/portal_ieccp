@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/header.css">
+  <link rel="stylesheet" href="/styles/pages.css">
+  <title>Missionário Aurino - Moçambique</title>
+
+  <meta property="twitter:image" content="https://www.ieccp.com.br/img/capa-social.jpg"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* --- Container Principal --- */
+    .page-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px;
+      color: var(--text-color);
+      font-family: "Poppins", sans-serif;
+    }
+
+    h1 {
+      font-family: "Oswald", sans-serif;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--accent-color);
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: "Oswald", sans-serif;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    /* --- Seção de Apresentação (Bio + Família) --- */
+    .intro-section {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      align-items: center;
+    }
+
+    .intro-text p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .intro-images {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .photo-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-5px);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Destaque especial para o mapa */
+    .map-container {
+      max-width: 200px;
+      margin: 0 auto; /* Centralizado abaixo da foto da família */
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+
+    /* --- Seção Galeria (Grid de Atividades) --- */
+    .gallery-section {
+      background-color: var(--bg-light);
+      padding: 40px;
+      border-radius: 20px;
+      margin-bottom: 60px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 250px; /* Altura fixa para uniformidade */
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05); /* Zoom suave ao passar o mouse */
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px;
+      font-size: 0.9rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+
+    /* --- Seção Prestação de Contas + Vídeo --- */
+    .accountability-section {
+      display: flex;
+      gap: 50px;
+      background: #fff;
+      padding: 20px 170px;
+      align-items: flex-start;
+    }
+
+    .text-column {
+      flex: 1;
+      color: #000;
+    }
+
+    .video-column {
+      flex: 0.8;
+      position: sticky;
+      top: 20px;
+    }
+
+    .video-frame {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      background: #000;
+    }
+
+    @media (max-width: 900px) {
+      .page-content {
+        padding: 60px 20px; /* Reduz o topo em tablets/celulares */
+      }
+
+      .intro-section, 
+      .accountability-section {
+        display: flex;
+        flex-direction: column;
+        padding: 20px; /* Remove o recuo grande lateral */
+        gap: 30px;
+      }
+
+      .intro-images {
+        order: -1; /* Foto da família acima do texto no mobile */
+        width: 100%;
+        padding: 0;
+      }
+
+      .video-column {
+        width: 100%;
+        position: static; /* Desativa o sticky para não flutuar sobre outros elementos no mobile */
+        margin-top: 20px;
+      }
+
+      h1 {
+        font-size: 2rem; /* Título um pouco menor para telas pequenas */
+      }
+
+      .map-container {
+        margin: 20px auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr; /* Força uma coluna única em celulares muito pequenos */
+      }
+      
+      .gallery-item {
+        height: 200px; /* Altura menor para fotos em telas pequenas */
+      }
+    }
+  </style>
+
+</head>
+<body>
+  
+  <header>
+    <a href="/" class="branding">
+      <img src="/img/logo.webp" alt="IECCP" />
+      IECCP
+    </a>
+    <nav>
+      <button id="btn-mobile" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </button>
+      <ul id="menu" role="menu">
+        <li><a href="/contribua.php">Dizimos e Ofertas</a></li>
+        <li><a href="/agenda.php">Agenda</a></li>
+        <li><a href="/pastoral.php">Pastoral</a></li>
+        <li><a href="/presente-diario.php">Presente Diário</a></li>
+        <li><a href="/noticias.php">Notícias</a></li>
+        <li><a href="/missoes.php">Missões</a></li>
+        <li><button id="btn-tema" title="Mudar Tema"><i class="fa-solid fa-sun"></i></button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="page-content">
+      
+      <h1>Missionário Aurino & Família</h1>
+
+      <section class="intro-section">
+        <div class="intro-text">
+          <h2>Missão em Moçambique</h2>
+          <p>
+            O missionário Aurino atua em <strong>Moçambique</strong>, onde tem se dedicado incansavelmente ao trabalho
+            evangelístico e social. Seu ministério é focado na proclamação do
+            Evangelho e em ações práticas que transformam a realidade das comunidades locais.
+          </p>
+          <p>
+            Entre suas atividades principais estão a organização de eventos evangelísticos, ações
+            educativas e o <strong>treinamento de líderes</strong> (Projeto Tito e Projeto Timóteo), capacitando nativos para o pastoreio e liderança.
+          </p>
+          <p>
+            Ao lado de sua esposa, <strong>Dani</strong>, e de seus filhos, <strong>Timóteo e Ester</strong>, a família serve com dedicação, sendo instrumentos de Deus para expansão do Reino e cuidado com os vulneráveis.
+          </p>
+        </div>
+
+        <div class="intro-images">
+          <div class="photo-frame">
+            <img src="/img/missionarios/img_aurino/foto_familia.jpeg" alt="Família do Missionário Aurino em Moçambique">
+          </div>
+          
+          <div class="photo-frame map-container" title="Local de Atuação: Moçambique">
+            <img src="/img/missionarios/img_aurino/mapa.jpeg" alt="Mapa da África destacando Moçambique">
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2>Registros do Campo</h2>
+        <p style="margin-bottom: 20px;">Um pouco do dia a dia: ensino, pregação e atividades com as crianças.</p>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_aurino/formacao.jpeg" alt="Formatura de Líderes">
+            <div class="gallery-caption">Formatura de Líderes Locais</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_aurino/dando_Aula_3.jpeg" alt="Missionário Aurino dando aula com projetor">
+            <div class="gallery-caption">Capacitação Bíblica (Projeto Timóteo)</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_aurino/gincanas_com_criancas.jpeg" alt="Atividades recreativas no palco">
+            <div class="gallery-caption">Gincanas e Recreação</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_aurino/foto_pregando.jpeg" alt="Pregando na igreja local">
+            <div class="gallery-caption">Cultos e Pregações nas Igrejas Locais</div>
+          </div>
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_aurino/pregando_2.jpeg" alt="Pregando em estrutura rural">
+            <div class="gallery-caption">Levando a Palavra a todas as comunidades</div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="/img/missionarios/img_aurino/acampamento.jpeg" alt="Acampamento noturno com fogueira">
+            <div class="gallery-caption">Acampamentos e Comunhão</div>
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <section class="accountability-section">
+        <div class="text-column">
+          <h2><i class="fa-solid fa-hand-holding-heart"></i> Prestação de Contas</h2>
+          
+          <p>
+            Muito obrigado a todos que têm colaborado! Louvado seja o Senhor por
+            sua compaixão e prontidão em exercer generosidade.
+          </p>
+          
+          <div style="background: #eef7ff; padding: 15px; border-left: 4px solid #0056b3; border-radius: 4px; margin: 20px 0;">
+            <strong>Últimas Ações:</strong><br>
+            <strong>Projeto Tito 2026</strong> 
+            <p> Esta semana acontece o Projeto Tito! É o quarto módulo da turma atual e o primeiro módulo da turma de Especialização!</p>
+          </div>
+        
+          <p>
+            Estamos gratos a Deus pela oportunidade de oferecer mais esse passo na formação e 
+            capacitação dos pastores de Moçambique.
+          </p>
+          <br>
+            <strong>Motivo de Louvor!</strong>
+            <p>
+             Também estamos louvando ao Senhor pelos pastores Pedro Wazen e Ricardo Fiorotto, 
+             que juntamente com irmãos da Igreja Batista do Redentor em Jundiai - SP, 
+             que voluntariamente vieram servir conosco!
+            </p>
+            <br>
+            <ul>
+              <li><em>Projeto Tito 2026</li>
+              <li>Obrigado por suas orações e envolvimento.</em> <span role="img" aria-label="amem">🙏</span></li>
+            </ul>   
+        </div>
+
+        <div class="video-column">
+          <video class="video-frame" controls preload="metadata">
+            <source src="/video/projeto-tito.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+          <small style="display:block; text-align:center; margin-top:10px; color:#666;">Assista ao relato completo do Missionário</small>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <script src="../scripts/tema.js" defer></script>
+  <script src="../scripts/menu.js" defer></script>
+  <script src="../scripts/conteudo.js" defer></script>
+  
+</body>
+</html>
