@@ -94,7 +94,7 @@
           <a href="/contribua" class="quick-card">
             <i class="fa-solid fa-heart"></i>
             <h3>Contribua</h3>
-            <p>Veja como ofertar via Pix, Transferência ou ser um Mantenedor.</p>
+            <p>Veja como ofertar via Pix, transferência ou ser um mantenedor.</p>
           </a>
         </div>
       </div>
