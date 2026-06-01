@@ -58,8 +58,7 @@
       <aside class="hero-side">
         <div class="info-card">
           <h2>Nossos Horários</h2>
-          <div class="time-row"><i class="fa-solid fa-bible"></i><span>Dom 09h — EBD</span></div>
-          <div class="time-row"><i class="fa-solid fa-bible"></i><span>Dom 10h20 — Culto da Manhã</span></div>
+          <div class="time-row"><i class="fa-solid fa-bible"></i><span>Dom 09h — EBD e Devocional</span></div>
           <div class="time-row"><i class="fa-solid fa-church"></i><span>Dom 18h30 — Culto da Noite</span></div>
           <div class="time-row"><i class="fa-solid fa-hands-praying"></i><span>Qua 07h30 — Reunião de Oração</span></div>
         </div>
