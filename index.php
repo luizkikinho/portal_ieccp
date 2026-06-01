@@ -61,7 +61,7 @@
           <div class="time-row"><i class="fa-solid fa-bible"></i><span>Dom 09h — EBD</span></div>
           <div class="time-row"><i class="fa-solid fa-bible"></i><span>Dom 10h20 — Culto da Manhã</span></div>
           <div class="time-row"><i class="fa-solid fa-church"></i><span>Dom 18h30 — Culto da Noite</span></div>
-          <div class="time-row"><i class="fa-solid fa-hands-praying"></i><span>Qua 19h30 — Reunião de Oração</span></div>
+          <div class="time-row"><i class="fa-solid fa-hands-praying"></i><span>Qua 07h30 — Reunião de Oração</span></div>
         </div>
 
         <div id="pd-container">
