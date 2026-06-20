@@ -1,16 +1,17 @@
-name: Deploy via ftp
 on: push
+name: 🚀 Deploy website on push
 jobs:
-  deploy:
-    name: Deploy
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v6
 
-      - name: FTP Deploy Locaweb
-        uses: locaweb/ftp-deploy@1.0.0
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
+          server: ftp.ieccp.com.br
+          username: ieccp1
           password: ${{ secrets.PASS }}
-          remoteDir: "public_html"
+          remoteDir: public_html
