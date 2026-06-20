@@ -13,5 +13,5 @@ jobs:
         with:
           server: ftp.ieccp.com.br
           username: ieccp1
-          password: ${{ secrets.PASS }}
+          password: ${{ secrets.FTP_PASSWORD }}
           server-dir: public_html
